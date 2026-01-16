@@ -1,0 +1,165 @@
+{
+  "info": {
+    "_postman_id": "b7b8e1c4-2b6d-4c9f-9c9f-123456789abc",
+    "name": "Storage Management System",
+    "description": "Postman collection for Storage Management System APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Storage APIs",
+      "item": [
+        {
+          "name": "Create Storage",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Main Warehouse\",\n  \"location\": \"Dhaka\",\n  \"capacity\": 500\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/storages",
+              "host": ["{{base_url}}"],
+              "path": ["api", "storages"]
+            }
+          }
+        },
+        {
+          "name": "Get All Storages",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/storages",
+              "host": ["{{base_url}}"],
+              "path": ["api", "storages"]
+            }
+          }
+        },
+        {
+          "name": "Update Storage",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Warehouse\",\n  \"capacity\": 800\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/storages/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "storages", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Delete Storage",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/api/storages/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "storages", ":id"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Item & Inventory APIs",
+      "item": [
+        {
+          "name": "Create Item",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop\",\n  \"category\": \"Electronics\",\n  \"quantity\": 10,\n  \"storageId\": \"696a6b91996a17fa7bd985ef\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/items",
+              "host": ["{{base_url}}"],
+              "path": ["api", "items"]
+            }
+          }
+        },
+        {
+          "name": "Get All Items",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/items",
+              "host": ["{{base_url}}"],
+              "path": ["api", "items"]
+            }
+          }
+        },
+        {
+          "name": "Stock In Item",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/items/:id/stock-in",
+              "host": ["{{base_url}}"],
+              "path": ["api", "items", ":id", "stock-in"]
+            }
+          }
+        },
+        {
+          "name": "Stock Out Item",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/items/:id/stock-out",
+              "host": ["{{base_url}}"],
+              "path": ["api", "items", ":id", "stock-out"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
